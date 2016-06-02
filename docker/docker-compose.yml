@@ -1,0 +1,54 @@
+version: '2'
+
+services:
+
+### HHVM Container #######################################
+
+    hhvm:
+        build: ./hhvm
+        volumes:
+            - ./../app:/var/www/app
+            - ./../storage/logs/hhvm:/var/log/hhvm
+        expose:
+            - "9000"
+        links:
+            - mysql
+
+### HHVM Container #######################################
+
+    php:
+        build: ./php
+        volumes:
+            - ./../app:/var/www/app
+        expose:
+            - "9000"
+        links:
+            - mysql
+
+### Nginx Server Container ##################################
+
+    nginx:
+        build: ./nginx
+        volumes:
+            - ./../storage/logs/nginx:/var/log/nginx
+            - ./../app:/var/www/app
+        ports:
+            - "80:80"
+            - "443:443"
+        links:
+            - php
+
+### MySQL Container #########################################
+
+    mysql:
+        build: ./mysql
+        volumes:
+            - ./../storage/data/mysql:/var/lib/mysql
+            - ./../storage/logs/mysql:/var/log/mysql
+        ports:
+            - "3306:3306"
+        environment:
+            MYSQL_DATABASE: databasename
+            MYSQL_USER: username
+            MYSQL_PASSWORD: secret
+            MYSQL_ROOT_PASSWORD: root
