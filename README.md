@@ -6,17 +6,17 @@ WP_Dock is a docker compose project for WordPress. It supports both HHVM and PHP
 
 ##Installation guide
 
-1) First you have to download [Docker Toolbox][1] if you haven't already.
-2) Download/Clone this project.
-3) Download WordPress, copy it inside the folder and rename it to 'app'.
-4) Navigate with terminal inside docker folder.
-5) `docker-compose up -d nginx` // It builds docker containers using 'docker-compose.yml' as its configuration
-6) `docker-machine ip default`  // To see the ip of the VM machine that this project runs on
-7) Open your browser to that IP and you will see the WordPress installation guide.
-8) Don't forget to change the WP configuration to
-  databaseName -> 'databasename'
-  databaseUser -> 'username'
-  databasePassword -> 'secret'
+  - First you have to download [Docker Toolbox][1] if you haven't already.
+  - Download/Clone this project.
+  - Download WordPress, copy it inside the folder and rename it to 'app'.
+  - Navigate with terminal inside docker folder.
+  - `docker-compose up -d nginx` // It builds docker containers using 'docker-compose.yml' as its configuration
+  - `docker-machine ip default`  // To see the ip of the VM machine that this project runs on
+  - Open your browser to that IP and you will see the WordPress installation guide.
+  - Don't forget to change the WP configuration to
+     - databaseName -> 'databasename'
+     - databaseUser -> 'username'
+     - databasePassword -> 'secret'
 
 Note: Also the host on WP configuration should be the ip of the machine (`docker-machine ip default`)
 
